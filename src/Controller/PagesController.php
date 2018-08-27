@@ -66,4 +66,8 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
+    public function film($arg1){
+         $this->set('film',$arg1);
+      }
 }
