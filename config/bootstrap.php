@@ -149,6 +149,7 @@ Email::setConfigTransport(Configure::consume('EmailTransport'));
 Email::setConfig(Configure::consume('Email'));
 Log::setConfig(Configure::consume('Log'));
 Security::setSalt(Configure::consume('Security.salt'));
+//Plugin::load('TinyAuth');
 
 /*
  * The default crypto extension in 3.0 is OpenSSL.
