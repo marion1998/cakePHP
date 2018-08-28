@@ -41,6 +41,13 @@ class FilmController extends AppController
         $this->set('film', $film);
     }
 
+    public function viewall()
+    {
+        $list = $this->Film->find();
+
+        $this->set('list', $list);
+    }
+
     /**
      * Add method
      *
