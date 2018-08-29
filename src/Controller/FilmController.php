@@ -18,12 +18,12 @@ class FilmController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
-    public function index()
-    {
-        $film = $this->paginate($this->Film);
+    // public function index()
+    // {
+    //     $film = $this->paginate($this->Film);
 
-        $this->set(compact('film'));
-    }
+    //     $this->set(compact('film'));
+    // }
 
     /**
      * View method
@@ -41,7 +41,7 @@ class FilmController extends AppController
         $this->set('film', $film);
     }
 
-    public function viewall()
+    public function index()
     {
         $list = $this->Film->find();
 
