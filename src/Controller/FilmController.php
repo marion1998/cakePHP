@@ -12,7 +12,9 @@ use App\Controller\AppController;
  */
 class FilmController extends AppController
 {
-
+    public $paginate = [
+        'limit' => 10,
+    ];
     /**
      * Index method
      *
