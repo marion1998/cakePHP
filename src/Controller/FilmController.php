@@ -27,6 +27,13 @@ class FilmController extends AppController
         $this->set(compact('film'));
     }
 
+    
+    public function filmuser(){
+        $film = $this->paginate($this->Film);
+
+        $this->set(compact('film'));
+    }
+
     /**
      * View method
      *
