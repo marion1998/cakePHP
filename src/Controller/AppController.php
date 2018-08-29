@@ -77,4 +77,14 @@ class AppController extends Controller
     {
         $this->Auth->allow(['index', 'view', 'display']);
     }
+
+    public function beforeRender(Event $event)
+    {
+        if($this->request->session()->read('Auth.User')){
+            $this->set('LoggedIn', true);
+        }
+        else {
+            $this->set('LoggedIn', false);
+        }
+    }
 }
