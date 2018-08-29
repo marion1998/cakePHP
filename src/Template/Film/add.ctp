@@ -19,7 +19,7 @@
             echo $this->Form->control('dateSortie', ['empty' => true]);
             echo $this->Form->control('duree', ['empty' => true]);
             echo $this->Form->control('synopsis');
-            echo $this->Form->control('DISPO');
+            echo $this->Form->control('DISPO', ['options' => ['1' => 'Disponible','0' => 'Indisponible']]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
