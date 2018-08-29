@@ -41,9 +41,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </li>
         </ul>
         <div class="top-bar-section">
-            <ul class="right">
-                <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
+            <ul class="right"> 
+                <?php if($LoggedIn) : ?>
+                    <li><?= $this->Html->Link('Logout' , ['controller' => 'users' , 'action' => 'logout']); ?></li>
+                    <li><?= $this->Html->Link('Cart' , ['controller' => '#' , 'action' => '#']); ?></li>
+                <?php else : ?>
+                    <li><?= $this->Html->Link('Login' , ['controller' => 'users' , 'action' => 'login']); ?></li>
+                    <li><?= $this->Html->Link('Register' , ['controller' => 'users' , 'action' => 'add']); ?></li>
+                <?php endif ; ?>
             </ul>
         </div>
     </nav>

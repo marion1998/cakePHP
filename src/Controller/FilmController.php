@@ -21,7 +21,6 @@ class FilmController extends AppController
     public function index()
     {
         $film = $this->paginate($this->Film);
-
         $this->set(compact('film'));
     }
 
