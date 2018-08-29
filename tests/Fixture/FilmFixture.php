@@ -51,8 +51,8 @@ class FilmFixture extends TestFixture
             [
                 'idFilm' => 1,
                 'titre' => 'Lorem ipsum dolor sit amet',
-                'dateSortie' => '2018-08-28 07:15:41',
-                'duree' => '07:15:41',
+                'dateSortie' => '2018-08-29 11:36:37',
+                'duree' => '11:36:37',
                 'synopsis' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
                 'DISPO' => 'Lorem ipsum dolor sit amet'
             ],

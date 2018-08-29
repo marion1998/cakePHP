@@ -49,13 +49,22 @@ class AppController extends Controller
 
         $this->loadComponent('Auth', [
             'loginRedirect' => [
-                'controller' => 'Pages',
-                'action' => 'view'
+                'controller' => 'Film',
+                'action' => 'index'
             ],
             'logoutRedirect' => [
                 'controller' => 'Pages',
-                'action' => 'display',
-                'home'
+                'action' => 'home'
+            ],
+
+            'unauthorizedRedirect' => [
+                'controller' => 'Users',
+                'action' => 'login',
+                'prefix' => false
+            ],
+            'authError' => 'You are not authorized to access that location.',
+            'flash' => [
+                'element' => 'error'
             ]
         ]);
         /*

@@ -13,6 +13,7 @@ use Cake\Event\Event;
  */
 class UsersController extends AppController
 {
+
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -25,14 +26,18 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-                return $this->redirect(['controller' => 'film']);
+                $users = $this->paginate($this->Users);
+                $this->set(compact('users'));
+                return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('Invalid username or password, try again'));
+            $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
         }
+
     }
 
     public function logout()
     {
+        $this->Flash->success(__('Good-Bye'));
         return $this->redirect($this->Auth->logout());
     }
     /**
