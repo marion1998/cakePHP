@@ -18,6 +18,7 @@ class UsersController extends AppController
         parent::beforeFilter($event);
         $this->Auth->allow('add');
     }
+    
     public function login()
     {
         if ($this->request->is('post')) {
