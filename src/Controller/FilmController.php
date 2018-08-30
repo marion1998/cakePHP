@@ -45,6 +45,8 @@ class FilmController extends AppController
             'contain' => []
         ]);
 
+        var_dump($film);
+
         $this->set('film', $film);
     }
 
@@ -122,23 +124,19 @@ class FilmController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-        public function filter()
+    public function filter()
     {
         if ($this->request->is('post')){
             $titre = $this->request->getData();
         }
 
-        // $list = $this->Film->get($titre, [
-        //     'contain' => []
-        // ]);
+    $list = $this->Film
+    ->find()
+    ->where(['titre LIKE' => '%'.$titre['Keyword'].'%'])
+    ->orWhere(['synopsis LIKE' => '%'.$titre['Keyword'].'%'])
+    ->all();
 
-    // $list = $this->Film
-    // ->find()
-    // ->where(['titre' => $titre[0]])
-    // ->all();
-
-
-
-        $this->set('list', $list);
+    //var_dump($list);
+    $this->set('list', $list);
     }
 }

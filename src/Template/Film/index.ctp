@@ -14,7 +14,7 @@
     <?= $this->Form->create(null , ['action'=>'filter']) ?>
     <fieldset>
         <legend><?= __('Recherche un film') ?></legend>
-        <?= $this->Form->control('Mots clés') ?>
+        <?= $this->Form->control('Keyword') ?>
     </fieldset>
 <?= $this->Form->button(__('Chercher')); ?>
 <?= $this->Form->end() ?>
