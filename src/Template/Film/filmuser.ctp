@@ -1,4 +1,5 @@
 <?php
+use App\Controller\AppController;
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Film[]|\Cake\Collection\CollectionInterface $film
@@ -34,7 +35,12 @@
                 <td class="">
                     <?= $this->Html->test ?>
                     <?= $this->Html->link(__('Plus de détails'), ['action' => 'view', $film->idFilm]) ?>
-                    <button class="btn btn-primary">Add to cart</button>
+                    
+                    <?= $this->Html->link(
+                        'Enter',
+                        '/film/filmuser',
+                        ['class' => 'button', 'onclick' => 'addToCart()']);?>
+                    
                     <?php //echo $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
                     <?php //echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete # {0}?', $film->idFilm)]) ?>
                 </td>
