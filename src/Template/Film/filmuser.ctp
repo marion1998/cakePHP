@@ -4,13 +4,13 @@
  * @var \App\Model\Entity\Film[]|\Cake\Collection\CollectionInterface $film
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Film'), ['action' => 'add']) ?></li>
     </ul>
-</nav>
-<div class="film index large-9 medium-8 columns content">
+</nav> -->
+<div class="film index content">
     <h3><?= __('Film') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
@@ -33,7 +33,7 @@
                 <td><?= h($film->DISPO) ?></td>
                 <td class="">
                     <?= $this->Html->test ?>
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $film->idFilm]) ?>
+                    <?= $this->Html->link(__('Plus de détails'), ['action' => 'view', $film->idFilm]) ?>
                     <?php //echo $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
                     <?php //echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete # {0}?', $film->idFilm)]) ?>
                 </td>
