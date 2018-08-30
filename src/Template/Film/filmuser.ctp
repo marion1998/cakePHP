@@ -20,7 +20,7 @@
                 <th scope="col"><?= $this->Paginator->sort('dateSortie') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('duree') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('DISPO') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" class="actions"><?= __('') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +31,7 @@
                 <td><?= h($film->dateSortie) ?></td>
                 <td><?= h($film->duree) ?></td>
                 <td><?= h($film->DISPO) ?></td>
-                <td class="actions">
+                <td class="">
                     <?= $this->Html->test ?>
                     <?= $this->Html->link(__('View'), ['action' => 'view', $film->idFilm]) ?>
                     <?php //echo $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
