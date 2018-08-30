@@ -11,14 +11,7 @@
     </ul>
 </nav>
 <div class="film index large-9 medium-8 columns content">
-    <?= $this->Form->create(null , ['action'=>'filter']) ?>
-    <fieldset>
-        <legend><?= __('Recherche un film') ?></legend>
-        <?= $this->Form->control('Keyword') ?>
-    </fieldset>
-<?= $this->Form->button(__('Chercher')); ?>
-<?= $this->Form->end() ?>
-    <h3><?= __('Film') ?></h3>
+    <h3><?= __('Recherche de film') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -31,7 +24,9 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($film as $film): ?>
+            <?php
+            ?>
+            <?php foreach ($list as $film): ?>
             <tr>
                 <td><?= $this->Number->format($film->idFilm) ?></td>
                 <td><?= h($film->titre) ?></td>
@@ -47,7 +42,7 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <div class="paginator">
+   <!--  <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('first')) ?>
             <?= $this->Paginator->prev('< ' . __('previous')) ?>
@@ -56,5 +51,5 @@
             <?= $this->Paginator->last(__('last') . ' >>') ?>
         </ul>
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
+    </div> -->
 </div>

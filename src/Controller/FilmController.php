@@ -25,7 +25,6 @@ class FilmController extends AppController
         $film = $this->paginate($this->Film);
         $this->set(compact('film'));
     }
-
     
     public function filmuser(){
         $film = $this->paginate($this->Film);
@@ -45,6 +44,8 @@ class FilmController extends AppController
         $film = $this->Film->get($id, [
             'contain' => []
         ]);
+
+        var_dump($film);
 
         $this->set('film', $film);
     }
@@ -123,17 +124,19 @@ class FilmController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function addToCart () {
-        $reservation = $this->Reservation->newEntity();
-        if ($this->request->is('post')) {
-            $reservation = $this->Reservation->patchEntity($reservation, $this->request->getData());
-            if ($this->Reservation->save($reservation)) {
-                $this->Flash->success(__('The reservation has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The reservation could not be saved. Please, try again.'));
+    public function filter()
+    {
+        if ($this->request->is('post')){
+            $titre = $this->request->getData();
         }
-        $this->set(compact('reservation'));
+
+    $list = $this->Film
+    ->find()
+    ->where(['titre LIKE' => '%'.$titre['Keyword'].'%'])
+    ->orWhere(['synopsis LIKE' => '%'.$titre['Keyword'].'%'])
+    ->all();
+
+    //var_dump($list);
+    $this->set('list', $list);
     }
 }
