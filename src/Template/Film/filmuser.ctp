@@ -15,7 +15,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('idFilm') ?></th>
+                <!-- <th scope="col"><?= $this->Paginator->sort('idFilm') ?></th> -->
                 <th scope="col"><?= $this->Paginator->sort('titre') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('dateSortie') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('duree') ?></th>
@@ -26,7 +26,7 @@
         <tbody>
             <?php foreach ($film as $film): ?>
             <tr>
-                <td><?= $this->Number->format($film->idFilm) ?></td>
+                <!-- <td><?= $this->Number->format($film->idFilm) ?></td> -->
                 <td><?= h($film->titre) ?></td>
                 <td><?= h($film->dateSortie) ?></td>
                 <td><?= h($film->duree) ?></td>
