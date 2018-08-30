@@ -7,7 +7,7 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Film'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('New Film'), ['action' => 'addbefore']) ?></li>
     </ul>
 </nav>
 <div class="film index large-9 medium-8 columns content">

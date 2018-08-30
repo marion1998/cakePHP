@@ -59,7 +59,7 @@ class FilmTable extends Table
             ->allowEmpty('dateSortie');
 
         $validator
-            ->time('duree')
+            ->integer('duree')
             ->allowEmpty('duree');
 
         $validator

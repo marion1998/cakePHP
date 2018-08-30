@@ -54,7 +54,16 @@ class FilmController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    
+    public function addbefore()
+    {
+         if ($this->request->is('post')) {
+             $titlemov = $this->request->getData('titre');
+             return $this->redirect(['action' => 'add', $titlemov]);
+         }
+    }
+    
+    public function add($titlesub = null)
     {
         $film = $this->Film->newEntity();
         if ($this->request->is('post')) {
@@ -66,6 +75,7 @@ class FilmController extends AppController
             }
             $this->Flash->error(__('The film could not be saved. Please, try again.'));
         }
+        $this->set('titlesub', $titlesub);
         $this->set(compact('film'));
     }
 
