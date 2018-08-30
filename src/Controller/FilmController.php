@@ -122,4 +122,18 @@ class FilmController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function addToCart () {
+        $reservation = $this->Reservation->newEntity();
+        if ($this->request->is('post')) {
+            $reservation = $this->Reservation->patchEntity($reservation, $this->request->getData());
+            if ($this->Reservation->save($reservation)) {
+                $this->Flash->success(__('The reservation has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The reservation could not be saved. Please, try again.'));
+        }
+        $this->set(compact('reservation'));
+    }
 }
