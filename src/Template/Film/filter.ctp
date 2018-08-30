@@ -11,13 +11,6 @@
     </ul>
 </nav>
 <div class="film index large-9 medium-8 columns content">
-    <?= $this->Form->create(null , ['action'=>'filter']) ?>
-    <fieldset>
-        <legend><?= __('Recherche un film') ?></legend>
-        <?= $this->Form->control('Mots clés') ?>
-    </fieldset>
-<?= $this->Form->button(__('Chercher')); ?>
-<?= $this->Form->end() ?>
     <h3><?= __('Film') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
@@ -31,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($film as $film): ?>
+            <?php foreach ($list as $film): ?>
             <tr>
                 <td><?= $this->Number->format($film->idFilm) ?></td>
                 <td><?= h($film->titre) ?></td>

@@ -25,7 +25,6 @@ class FilmController extends AppController
         $film = $this->paginate($this->Film);
         $this->set(compact('film'));
     }
-
     
     public function filmuser(){
         $film = $this->paginate($this->Film);
@@ -121,5 +120,25 @@ class FilmController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+        public function filter()
+    {
+        if ($this->request->is('post')){
+            $titre = $this->request->getData();
+        }
+
+        // $list = $this->Film->get($titre, [
+        //     'contain' => []
+        // ]);
+
+    // $list = $this->Film
+    // ->find()
+    // ->where(['titre' => $titre[0]])
+    // ->all();
+
+
+
+        $this->set('list', $list);
     }
 }

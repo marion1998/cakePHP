@@ -41,6 +41,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </li>
         </ul>
         <div class="top-bar-section">
+            <ul class="left"> 
+                <?php if($LoggedIn) : ?>
+                    <li><?= $this->Html->Link('List of films' , ['controller' => 'film' , 'action' => 'index']); ?></li>
+                    <li><?= $this->Html->Link('Add film' , ['controller' => 'film' , 'action' => 'addbefore']); ?></li>
+                <?php endif ; ?>
+            </ul>
             <ul class="right"> 
                 <?php if($LoggedIn) : ?>
                     <li><?= $this->Html->Link('Logout' , ['controller' => 'users' , 'action' => 'logout']); ?></li>
