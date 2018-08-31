@@ -6,10 +6,9 @@ use Cake\ORM\Entity;
 /**
  * Reservation Entity
  *
- * @property int $idreservation
+ * @property int $idReservation
  * @property int $idFilm
  * @property int $idUser
- * @property \Cake\I18n\FrozenTime $created
  */
 class Reservation extends Entity
 {
@@ -24,6 +23,7 @@ class Reservation extends Entity
      * @var array
      */
     protected $_accessible = [
-        'created' => true
+        'idFilm' => true,
+        'idUser' => true
     ];
 }

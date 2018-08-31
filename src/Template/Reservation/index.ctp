@@ -1,4 +1,3 @@
-<!--<warning>Bake cannot generate associations for composite primary keys at this time</warning>.-->
 <?php
 /**
  * @var \App\View\AppView $this
@@ -16,20 +15,18 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('idreservation') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('idReservation') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('idFilm') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('idUser') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($reservation as $reservation): ?>
             <tr>
-                <td><?= $this->Number->format($reservation->idreservation) ?></td>
+                <td><?= $this->Number->format($reservation->idReservation) ?></td>
                 <td><?= $this->Number->format($reservation->idFilm) ?></td>
                 <td><?= $this->Number->format($reservation->idUser) ?></td>
-                <td><?= h($reservation->created) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $reservation->idreservation]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $reservation->idreservation]) ?>
