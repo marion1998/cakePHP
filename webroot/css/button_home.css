@@ -1,0 +1,9 @@
+button {
+    display: flex;
+    margin: auto;
+    align-self: center;
+}
+
+#butt1 {
+    margin-bottom: 30px;
+}
