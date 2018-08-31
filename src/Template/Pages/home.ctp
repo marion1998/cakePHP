@@ -20,9 +20,5 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
        	<?= $this->Html->link('Sign up', '/users/add', ['class' => 'button','target' => '_blank']) ?>
        	<?php endif ?>
         </div>
-        <div>
-        <input type="checkbox" id="scales" name="feature"
-               value="scales" checked />
-    </div>
 </body>
 </html>
