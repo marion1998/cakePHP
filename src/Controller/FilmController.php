@@ -12,7 +12,9 @@ use App\Controller\AppController;
  */
 class FilmController extends AppController
 {
-
+    public $paginate = [
+        'limit' => 10,
+    ];
     /**
      * Index method
      *
@@ -20,6 +22,11 @@ class FilmController extends AppController
      */
     public function index()
     {
+        $film = $this->paginate($this->Film);
+        $this->set(compact('film'));
+    }
+    
+    public function filmuser(){
         $film = $this->paginate($this->Film);
 
         $this->set(compact('film'));
@@ -38,6 +45,8 @@ class FilmController extends AppController
             'contain' => []
         ]);
 
+        var_dump($film);
+
         $this->set('film', $film);
     }
 
@@ -46,7 +55,16 @@ class FilmController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    
+    public function addbefore()
+    {
+         if ($this->request->is('post')) {
+             $titlemov = $this->request->getData('titre');
+             return $this->redirect(['action' => 'add', $titlemov]);
+         }
+    }
+    
+    public function add($titlesub = null)
     {
         $film = $this->Film->newEntity();
         if ($this->request->is('post')) {
@@ -58,6 +76,7 @@ class FilmController extends AppController
             }
             $this->Flash->error(__('The film could not be saved. Please, try again.'));
         }
+        $this->set('titlesub', $titlesub);
         $this->set(compact('film'));
     }
 
@@ -103,5 +122,21 @@ class FilmController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function filter()
+    {
+        if ($this->request->is('post')){
+            $titre = $this->request->getData();
+        }
+
+    $list = $this->Film
+    ->find()
+    ->where(['titre LIKE' => '%'.$titre['Keyword'].'%'])
+    ->orWhere(['synopsis LIKE' => '%'.$titre['Keyword'].'%'])
+    ->all();
+
+    //var_dump($list);
+    $this->set('list', $list);
     }
 }

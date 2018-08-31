@@ -16,9 +16,7 @@
         <legend><?= __('Ajouter un utilisateur') ?></legend>
         <?= $this->Form->control('username') ?>
         <?= $this->Form->control('password') ?>
-        <?= $this->Form->control('role', [
-            'options' => ['admin' => 'Admin', 'client' => 'Client']
-        ]) ?>
+        <?= $this->Form->control('role',['type' => 'hidden','value'=>'client']) ?>
     </fieldset>
 <?= $this->Form->button(__('Ajouter')); ?>
 <?= $this->Form->end() ?>

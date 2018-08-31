@@ -7,17 +7,11 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Film'), ['action' => 'addbefore']) ?></li>
+        <li><?= $this->Html->link(__('New Film'), ['action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="film index large-9 medium-8 columns content">
-    <?= $this->Form->create(null , ['action'=>'filter']) ?>
-    <fieldset>
-        <legend><?= __('Recherche un film') ?></legend>
-        <?= $this->Form->control('Keyword') ?>
-    </fieldset>
-<?= $this->Form->button(__('Chercher')); ?>
-<?= $this->Form->end() ?>
+    <h1>Ton Panier</h1>
+    <div class="film index large-9 medium-8 columns content">
     <h3><?= __('Film') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
@@ -39,9 +33,10 @@
                 <td><?= h($film->duree) ?></td>
                 <td><?= h($film->DISPO) ?></td>
                 <td class="actions">
+                    <?= $this->Html->test ?>
                     <?= $this->Html->link(__('View'), ['action' => 'view', $film->idFilm]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete # {0}?', $film->idFilm)]) ?>
+                    <?php //echo $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
+                    <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete # {0}?', $film->idFilm)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

@@ -10,7 +10,7 @@
         <li><?= $this->Html->link(__('Edit Film'), ['action' => 'edit', $film->idFilm]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Film'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete # {0}?', $film->idFilm)]) ?> </li>
         <li><?= $this->Html->link(__('List Film'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Film'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('New Film'), ['action' => 'addbefore']) ?> </li>
     </ul>
 </nav>
 <div class="film view large-9 medium-8 columns content">
