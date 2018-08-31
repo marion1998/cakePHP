@@ -36,11 +36,11 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <title>
         <?= $cakeDescription ?>
     </title>
-
+	<?php if(!$LoggedIn) : ?>
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->link('LOGIN', '/users/login', ['class' => 'button','target' => '_blank']) ?>
     <?= $this->Html->link('Sign up', '/users/add', ['class' => 'button','target' => '_blank']) ?>
-    
+    <?php endif ?>
     <link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
     <?= $this->Html->css('button_home.css') ?>
 </head>
