@@ -44,6 +44,11 @@ use App\Controller\AppController;
                         'To cart',['controller'=>'cart','action'=>'addToCart',$film->idFilm,$film->titre],
                         ['class' => 'button']);?>
                     
+                    <?= $this->Html->link(
+                        'Enter',
+                        '/film/filmuser',
+                        ['class' => 'button', 'onclick' => 'addToCart()']);?>
+                    
                     <?php //echo $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
                     <?php //echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete # {0}?', $film->idFilm)]) ?>
                 </td>
