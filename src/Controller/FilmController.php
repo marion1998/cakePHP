@@ -30,9 +30,10 @@ class FilmController extends AppController
         $film = $this->paginate($this->Film);
         $session = $this->request->session();
          $cart = $session->read('cart');
-        print_r($cart);
+         print_r($cart);
 
         $this->set(compact('film'));
+        $this->set('cart', $cart);
     }
 
     /**

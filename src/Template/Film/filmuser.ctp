@@ -9,6 +9,10 @@ use App\Controller\AppController;
     <ul class="side-nav">
         <!-- <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Film'), ['action' => 'addbefore']) ?></li> -->
+        <?php foreach ($cart as $v): ?>
+        <li><?= $v['title'] ?><?= $this->Html->link(
+                        'x',['controller'=>'cart','action'=>'removeFromCart',$v['id']])?></li>
+        <?php endforeach ?>
     </ul>
 </nav>
 <div class="film index large-9 medium-8 columns content">
@@ -37,7 +41,7 @@ use App\Controller\AppController;
                     <?= $this->Html->link(__('Plus de détails'), ['action' => 'view', $film->idFilm]) ?>
                 
                     <?= $this->Html->link(
-                        'Enter',['controller'=>'cart','action'=>'addToCart',$film->idFilm],
+                        'To cart',['controller'=>'cart','action'=>'addToCart',$film->idFilm,$film->titre],
                         ['class' => 'button']);?>
                     
                     <?php //echo $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
