@@ -24,18 +24,17 @@ class ReservationFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'idreservation' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'idReservation' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'idFilm' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'idUser' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'idUser' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
-            'fk_cart_film_idx' => ['type' => 'index', 'columns' => ['idFilm'], 'length' => []],
-            'fk_cart_user1_idx' => ['type' => 'index', 'columns' => ['idUser'], 'length' => []],
+            'idFilm' => ['type' => 'index', 'columns' => ['idFilm'], 'length' => []],
+            'idUser' => ['type' => 'index', 'columns' => ['idUser'], 'length' => []],
         ],
         '_constraints' => [
-            'primary' => ['type' => 'primary', 'columns' => ['idreservation', 'idFilm', 'idUser'], 'length' => []],
-            'fk_cart_film' => ['type' => 'foreign', 'columns' => ['idFilm'], 'references' => ['film', 'idFilm'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
-            'fk_reservation_user1' => ['type' => 'foreign', 'columns' => ['idUser'], 'references' => ['user', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'primary' => ['type' => 'primary', 'columns' => ['idReservation'], 'length' => []],
+            'reservation_ibfk_1' => ['type' => 'foreign', 'columns' => ['idFilm'], 'references' => ['film', 'idFilm'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'reservation_ibfk_2' => ['type' => 'foreign', 'columns' => ['idUser'], 'references' => ['users', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -53,10 +52,9 @@ class ReservationFixture extends TestFixture
     {
         $this->records = [
             [
-                'idreservation' => 1,
+                'idReservation' => 1,
                 'idFilm' => 1,
-                'idUser' => 1,
-                'created' => '2018-08-30 12:53:26'
+                'idUser' => 1
             ],
         ];
         parent::init();

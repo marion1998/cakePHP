@@ -15,6 +15,7 @@
     <fieldset>
         <legend><?= __('Add Reservation') ?></legend>
         <?php
+            echo $this->Form->control('idReservation');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

@@ -17,8 +17,6 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Reservation patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Reservation[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Reservation findOrCreate($search, callable $callback = null, $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class ReservationTable extends Table
 {
@@ -36,8 +34,6 @@ class ReservationTable extends Table
         $this->setTable('reservation');
         $this->setDisplayField('idreservation');
         $this->setPrimaryKey(['idreservation', 'idFilm', 'idUser']);
-
-        $this->addBehavior('Timestamp');
     }
 
     /**
@@ -49,16 +45,18 @@ class ReservationTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('idreservation')
-            ->allowEmpty('idreservation', 'create');
+            ->integer('idReservation')
+            ->allowEmpty('idReservation', 'create');
 
         $validator
             ->integer('idFilm')
-            ->allowEmpty('idFilm', 'create');
+            ->requirePresence('idFilm', 'create')
+            ->notEmpty('idFilm');
 
         $validator
-            ->integer('idUser')
-            ->allowEmpty('idUser', 'create');
+            ->nonNegativeInteger('idUser')
+            ->requirePresence('idUser', 'create')
+            ->notEmpty('idUser');
 
         return $validator;
     }

@@ -17,8 +17,8 @@
     <h3><?= h($reservation->idreservation) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('Idreservation') ?></th>
-            <td><?= $this->Number->format($reservation->idreservation) ?></td>
+            <th scope="row"><?= __('IdReservation') ?></th>
+            <td><?= $this->Number->format($reservation->idReservation) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('IdFilm') ?></th>
@@ -27,10 +27,6 @@
         <tr>
             <th scope="row"><?= __('IdUser') ?></th>
             <td><?= $this->Number->format($reservation->idUser) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($reservation->created) ?></td>
         </tr>
     </table>
 </div>
