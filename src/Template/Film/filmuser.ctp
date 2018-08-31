@@ -35,7 +35,7 @@ use App\Controller\AppController;
                 <td class="">
                     <?= $this->Html->test ?>
                     <?= $this->Html->link(__('Plus de détails'), ['action' => 'view', $film->idFilm]) ?>
-                    
+                
                     <?= $this->Html->link(
                         'Enter',['controller'=>'cart','action'=>'addToCart',$film->idFilm],
                         ['class' => 'button']);?>
