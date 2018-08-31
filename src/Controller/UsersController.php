@@ -28,6 +28,10 @@ class UsersController extends AppController
                 $this->Auth->setUser($user);
                 $users = $this->paginate($this->Users);
                 $this->set(compact('users'));
+
+                $session = $this->request->session();
+                $session->write('cart', []);
+
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
@@ -38,6 +42,10 @@ class UsersController extends AppController
     public function logout()
     {
             $this->Flash->success(__('Good-Bye'));
+
+            $session = $this->request->session();
+            $session->destroy();
+
             return $this->redirect($this->Auth->logout());
     }
     /**
@@ -48,7 +56,6 @@ class UsersController extends AppController
     public function index()
     {
         $users = $this->paginate($this->Users);
-
         $this->set(compact('users'));
     }
 
