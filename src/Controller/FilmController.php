@@ -45,8 +45,6 @@ class FilmController extends AppController
             'contain' => []
         ]);
 
-        var_dump($film);
-
         $this->set('film', $film);
     }
 
