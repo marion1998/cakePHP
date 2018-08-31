@@ -36,10 +36,9 @@ use App\Controller\AppController;
                     <?= $this->Html->test ?>
                     <?= $this->Html->link(__('Plus de détails'), ['action' => 'view', $film->idFilm]) ?>
                     
-                    <?= $this->Html->link(
-                        'Enter',
-                        '/film/filmuser',
-                        ['class' => 'button', 'onclick' => 'addToCart()']);?>
+                    <div class="text-right">
+                    <INPUT type="checkbox" name="choix4" value="4"> 
+                     </div>
                     
                     <?php //echo $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
                     <?php //echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete # {0}?', $film->idFilm)]) ?>
