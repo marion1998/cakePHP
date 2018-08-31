@@ -28,6 +28,9 @@ class FilmController extends AppController
     
     public function filmuser(){
         $film = $this->paginate($this->Film);
+        $session = $this->request->session();
+         $cart = $session->read('cart');
+        print_r($cart);
 
         $this->set(compact('film'));
     }

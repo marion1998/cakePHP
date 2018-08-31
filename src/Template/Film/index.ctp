@@ -25,7 +25,9 @@
 
 
 
-    <h3><?= __('Film') ?></h3>
+    <h3><?= __('Film') ?>
+        
+    </h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

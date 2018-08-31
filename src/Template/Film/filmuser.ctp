@@ -5,13 +5,13 @@ use App\Controller\AppController;
  * @var \App\Model\Entity\Film[]|\Cake\Collection\CollectionInterface $film
  */
 ?>
-<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Film'), ['action' => 'addbefore']) ?></li>
+        <!-- <li class="heading"><?= __('Actions') ?></li>
+        <li><?= $this->Html->link(__('New Film'), ['action' => 'addbefore']) ?></li> -->
     </ul>
-</nav> -->
-<div class="film index content">
+</nav>
+<div class="film index large-9 medium-8 columns content">
     <h3><?= __('Film') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
@@ -37,9 +37,8 @@ use App\Controller\AppController;
                     <?= $this->Html->link(__('Plus de détails'), ['action' => 'view', $film->idFilm]) ?>
                     
                     <?= $this->Html->link(
-                        'Enter',
-                        '/film/filmuser',
-                        ['class' => 'button', 'onclick' => 'addToCart()']);?>
+                        'Enter',['controller'=>'cart','action'=>'addToCart',$film->idFilm],
+                        ['class' => 'button']);?>
                     
                     <?php //echo $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
                     <?php //echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete # {0}?', $film->idFilm)]) ?>
