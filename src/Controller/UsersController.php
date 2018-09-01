@@ -86,9 +86,9 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             // Avant 3.4.0 $this->request->data() etait utilisée.
             $user = $this->Users->patchEntity($user, $this->request->getData());
-            $user->role = "client";
+            $user->group_id = 2;
             if ($this->Users->save($user)) {
-                $this->Flash->success(__("L'utilisateur a été sauvegardé. ".$user));
+                $this->Flash->success(__("L'utilisateur a été sauvegardé. "));
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__("Impossible d'ajouter l'utilisateur."));

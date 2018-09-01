@@ -25,8 +25,8 @@
             <td><?= h($user->password) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Role') ?></th>
-            <td><?= h($user->role) ?></td>
+            <th scope="row"><?= __('Groupe_id') ?></th>
+            <td><?= h($user->group_id)==1?"Admin":"User" ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>

@@ -23,7 +23,7 @@
         <?php
             echo $this->Form->control('username');
             echo $this->Form->control('password');
-            echo $this->Form->control('role');
+            echo $this->Form->control('group_id',['options'=>['1'=>'Admin','2'=>'User']]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
