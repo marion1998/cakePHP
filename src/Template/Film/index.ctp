@@ -50,7 +50,7 @@
                 <td><?= h($film->DISPO)==1?"Available":"Not available" ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete # {0}?', $film->idFilm)]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete #{0} : "{1}"?', $film->idFilm,$film->titre)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
