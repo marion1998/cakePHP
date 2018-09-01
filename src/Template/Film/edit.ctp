@@ -21,7 +21,7 @@
     <fieldset>
         <legend><?= __('Edit Film') ?></legend>
         <?php
-            echo $this->Form->control('titre');
+            echo "<h3>".$film->titre."</h3>";
             echo $this->Form->control('dateSortie', ['empty' => true]);
             echo $this->Form->control('duree', ['empty' => true]);
             echo $this->Form->control('synopsis');
