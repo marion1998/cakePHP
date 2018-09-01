@@ -8,8 +8,7 @@ use App\Controller\AppController;
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <!-- <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Film'), ['action' => 'addbefore']) ?></li> -->
+        <li class="heading"><?= __('Cart') ?></li>
         <?php foreach ($cart as $v): ?>
         <li><?= $v['title'] ?><?= $this->Html->link(
                         'x',['controller'=>'cart','action'=>'removeFromCart',$v['id']])?></li>
@@ -19,10 +18,10 @@ use App\Controller\AppController;
 <div class="film index large-9 medium-8 columns content">
     <?= $this->Form->create(null , ['action'=>'filter']) ?>
     <fieldset>
-        <legend><?= __('Recherche un film') ?></legend>
+        <legend><?= __('Search a film') ?></legend>
         <?= $this->Form->control('Keyword') ?>
     </fieldset>
-    <?= $this->Form->button(__('Chercher')); ?>
+    <?= $this->Form->button(__('Let\'s go')); ?>
     <?= $this->Form->end() ?>
 
     <h3><?= __('Film') ?></h3>
@@ -30,10 +29,10 @@ use App\Controller\AppController;
         <thead>
             <tr>
                 <!-- <th scope="col"><?= $this->Paginator->sort('idFilm') ?></th> -->
-                <th scope="col"><?= $this->Paginator->sort('titre') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('dateSortie') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('duree') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('DISPO') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('titre','Title') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('dateSortie','Release date') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('duree','Duration') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('DISPO','Disponibility') ?></th>
                 <th scope="col" class="actions"><?= __('') ?></th>
             </tr>
         </thead>
@@ -42,14 +41,14 @@ use App\Controller\AppController;
             <tr>
                 <td>
                 <?= $this->Html->link(__(h($film->titre)), ['action' => 'view', $film->idFilm]) ?></td>
-                <td><?= strftime('%e %B %Y',strtotime(h($film->dateSortie))) ?></td>
+                <td><?= date('j F Y',strtotime(h($film->dateSortie))) ?></td>
                 <td><?= h($film->duree)." minutes" ?></td>
-                <td><?= h($film->DISPO)==1?"Disponible":"Non disponible" ?></td>
+                <td><?= h($film->DISPO)==1?"Available":"Not available" ?></td>
                 <td class="">
                     <?= $this->Html->test ?>
                 
                     <?= $this->Html->link(
-                        'Ajout au panier',['controller'=>'cart','action'=>'addToCart',$film->idFilm,$film->titre]
+                        'Add to cart',['controller'=>'cart','action'=>'addToCart',$film->idFilm,$film->titre]
                         );?>
                     
                     <?php //echo $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
