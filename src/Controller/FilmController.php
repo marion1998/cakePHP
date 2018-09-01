@@ -131,16 +131,16 @@ class FilmController extends AppController
             $titre = $this->request->getData();
         }
 
-    $list = $this->paginate($this->Film
-    ->find()
-    ->where(['titre LIKE' => '%'.$titre['Keyword'].'%'])
-    ->orWhere(['synopsis LIKE' => '%'.$titre['Keyword'].'%']));
+        $list = $this->paginate($this->Film
+            ->find()
+            ->where(['titre LIKE' => '%'.$titre['Keyword'].'%'])
+            ->orWhere(['synopsis LIKE' => '%'.$titre['Keyword'].'%']));
 
-    $session = $this->request->session();
-    $cart = $session->read('cart');
+        $session = $this->request->session();
+        $cart = $session->read('cart');
 
-    $this->set('cart', $cart);
+        $this->set('cart', $cart);
 
-    $this->set(compact('list', $list));
+        $this->set(compact('list', $list));
     }
 }

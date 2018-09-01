@@ -24,14 +24,14 @@ use App\Controller\AppController;
     <?= $this->Form->button(__('Let\'s go')); ?>
     <?= $this->Form->end() ?>
 
-    <h3><?= __('Film') ?></h3>
+    <h3><?= 'List' ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('titre','Title') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('dateSortie','Release date') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('duree','Duration') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('DISPO','Disponibility') ?></th>
+                <th scope="col"><?='Title';?></th>
+                <th scope="col"><?='Release date';?></th>
+                <th scope="col"><?='Duration'; ?></th>
+                <th scope="col"><?='Disponibility';?></th>
                 <th scope="col" class="actions"><?= __('') ?></th>
             </tr>
         </thead>
