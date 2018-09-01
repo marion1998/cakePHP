@@ -14,6 +14,7 @@ use App\Controller\AppController;
                         'x',['controller'=>'cart','action'=>'removeFromCart',$v['id']])?></li>
         <?php endforeach ?>
     </ul>
+    <?= $this->Html->link('Validate cart',['controller'=>'reservation','action'=>'createReservation']);?>
 </nav>
 <div class="film index large-9 medium-8 columns content">
     <?= $this->Form->create(null , ['action'=>'filter']) ?>
