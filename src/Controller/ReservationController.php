@@ -41,6 +41,26 @@ class ReservationController extends AppController
         $this->set('reservation', $reservation);
     }
 
+    public function createReservation()
+    {
+        $session = $this->request->session();
+        $cart = $session->read('cart');
+        $user = $session->read('Auth.User')['id'];
+        foreach($cart as $v)
+        {
+            $reservation = $this->Reservation->newEntity();
+            $reservation->idUser = $user;
+            $reservation->idFilm = $v['id'];
+            $this->Reservation->save($reservation);
+
+        }
+        $session->write('cart', []);
+        return $this->redirect(['controller'=>'film','action'=>'filmuser']);
+
+
+    }
+
+
     /**
      * Add method
      *
