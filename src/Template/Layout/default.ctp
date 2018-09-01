@@ -44,7 +44,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <ul class="left"> 
                 <?php if($LoggedIn) : ?>
                     <li><?= $this->Html->Link('List of films' , ['controller' => 'film' , 'action' => 'filmuser']); ?></li>
-                    <li><?= $this->Html->Link('Add film' , ['controller' => 'film' , 'action' => 'addbefore']); ?></li>
+                    <li><?= $this->Html->Link('New film' , ['controller' => 'film' , 'action' => 'addbefore']); ?></li>
                 <?php endif ; ?>
             </ul>
             <ul class="right"> 
