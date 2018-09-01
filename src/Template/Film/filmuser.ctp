@@ -35,7 +35,7 @@ use App\Controller\AppController;
                 <td><?= h($film->titre) ?></td>
                 <td><?= h($film->dateSortie) ?></td>
                 <td><?= h($film->duree) ?></td>
-                <td><?= h($film->DISPO) ?></td>
+                <td><?= h($film->DISPO)==1?"Disponible":"Non disponible" ?></td>
                 <td class="">
                     <?= $this->Html->test ?>
                     <?= $this->Html->link(__('Plus de détails'), ['action' => 'view', $film->idFilm]) ?>
