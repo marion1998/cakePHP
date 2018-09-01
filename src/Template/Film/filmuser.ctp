@@ -4,6 +4,7 @@ use App\Controller\AppController;
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Film[]|\Cake\Collection\CollectionInterface $film
  */
+ setlocale (LC_TIME, 'fr_FR.utf8','fra');
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -33,8 +34,8 @@ use App\Controller\AppController;
             <tr>
                 <!-- <td><?= $this->Number->format($film->idFilm) ?></td> -->
                 <td><?= h($film->titre) ?></td>
-                <td><?= h($film->dateSortie) ?></td>
-                <td><?= h($film->duree) ?></td>
+                <td><?= strftime('%e %B %Y',strtotime(h($film->dateSortie))) ?></td>
+                <td><?= h($film->duree)." minutes" ?></td>
                 <td><?= h($film->DISPO)==1?"Disponible":"Non disponible" ?></td>
                 <td class="">
                     <?= $this->Html->test ?>
