@@ -13,10 +13,10 @@
 <div class="users form large-9 medium-8 columns content">
 <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __('Enregistrement') ?></legend>
+        <legend><?= __('Add user') ?></legend>
         <?= $this->Form->control('username') ?>
         <?= $this->Form->control('password') ?>
     </fieldset>
-<?= $this->Form->button(__('Ajouter')); ?>
+<?= $this->Form->button(__('Ok')); ?>
 <?= $this->Form->end() ?>
 </div>

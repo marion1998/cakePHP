@@ -94,6 +94,8 @@ class UsersController extends AppController
             $this->Flash->error(__("Impossible d'ajouter l'utilisateur."));
         }
         $this->set('user', $user);
+
+
     }
 
     /**
