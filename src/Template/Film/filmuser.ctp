@@ -32,18 +32,17 @@ use App\Controller\AppController;
         <tbody>
             <?php foreach ($film as $film): ?>
             <tr>
-                <!-- <td><?= $this->Number->format($film->idFilm) ?></td> -->
-                <td><?= h($film->titre) ?></td>
+                <td>
+                <?= $this->Html->link(__(h($film->titre)), ['action' => 'view', $film->idFilm]) ?></td>
                 <td><?= strftime('%e %B %Y',strtotime(h($film->dateSortie))) ?></td>
                 <td><?= h($film->duree)." minutes" ?></td>
                 <td><?= h($film->DISPO)==1?"Disponible":"Non disponible" ?></td>
                 <td class="">
                     <?= $this->Html->test ?>
-                    <?= $this->Html->link(__('Plus de détails'), ['action' => 'view', $film->idFilm]) ?>
                 
                     <?= $this->Html->link(
-                        'To cart',['controller'=>'cart','action'=>'addToCart',$film->idFilm,$film->titre],
-                        ['class' => 'button']);?>
+                        'Ajout au panier',['controller'=>'cart','action'=>'addToCart',$film->idFilm,$film->titre]
+                        );?>
                     
                     <?php //echo $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
                     <?php //echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete # {0}?', $film->idFilm)]) ?>
