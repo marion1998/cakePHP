@@ -32,8 +32,8 @@ class ReservationTable extends Table
         parent::initialize($config);
 
         $this->setTable('reservation');
-        $this->setDisplayField('idreservation');
-        $this->setPrimaryKey(['idreservation', 'idFilm', 'idUser']);
+        $this->setDisplayField('idReservation');
+        $this->setPrimaryKey(['idReservation']);
     }
 
     /**
