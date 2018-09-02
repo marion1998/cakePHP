@@ -14,10 +14,10 @@
 <?= $this->Flash->render() ?>
 <?= $this->Form->create() ?>
     <fieldset>
-        <legend><?= __("Merci de rentrer vos nom d'utilisateur et mot de passe") ?></legend>
+        <legend><?= __("Please enter your username and password") ?></legend>
         <?= $this->Form->control('username') ?>
         <?= $this->Form->control('password') ?>
     </fieldset>
-<?= $this->Form->button(__('Se Connecter')); ?>
+<?= $this->Form->button(__('Connect')); ?>
 <?= $this->Form->end() ?>
 </div>

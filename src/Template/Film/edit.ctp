@@ -22,10 +22,10 @@
         <legend><?= __('Edit Film') ?></legend>
         <?php
             echo "<h3>".$film->titre."</h3>";
-            echo $this->Form->control('dateSortie', ['empty' => true]);
-            echo $this->Form->control('duree', ['empty' => true]);
-            echo $this->Form->control('synopsis');
-            echo $this->Form->control('DISPO');
+            echo $this->Form->control('dateSortie', ['label'=>'Release date' ,'empty' => true]);
+            echo $this->Form->control('duree', ['label'=>'Duration' ,'empty' => true]);
+            echo $this->Form->control('synopsis', ['label'=>'Synopsis']);
+            echo $this->Form->control('DISPO',['label'=>'Disponibility']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

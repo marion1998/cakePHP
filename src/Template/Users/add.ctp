@@ -13,7 +13,7 @@
 <div class="users form large-9 medium-8 columns content">
 <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __('Add user') ?></legend>
+        <legend><?= __('Register') ?></legend>
         <?= $this->Form->control('username') ?>
         <?= $this->Form->control('password') ?>
     </fieldset>
