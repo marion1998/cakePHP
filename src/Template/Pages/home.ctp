@@ -19,6 +19,9 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
        	<?= $this->Html->link('LOGIN', '/users/login', ['class' => 'button','target' => '_blank']) ?>
        	<?= $this->Html->link('Sign up', '/users/add', ['class' => 'button','target' => '_blank']) ?>
        	<?php endif ?>
+
+        <?= $this->Html->image('http://www.larchipel.paris/wp-content/uploads/2014/10/logo_simplon.jpg'); ?>
+        
         </div>
 </body>
 </html>
