@@ -5,9 +5,12 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Users Model
+ *
+ * @property |\Cake\ORM\Association\BelongsTo $Groups
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
@@ -23,7 +26,14 @@ use Cake\Validation\Validator;
 class UsersTable extends Table
 {
 
-    /**
+    public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity, 
+	\ArrayObject $options)
+    {
+        $hasher = new DefaultPasswordHasher;
+        $entity->password = $hasher->hash($entity->password);
+        return true;
+    }
+        /**
      * Initialize method
      *
      * @param array $config The configuration for the Table.
@@ -32,12 +42,19 @@ class UsersTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
+        
         $this->addBehavior('Acl.Acl', ['type' => 'requester']);
+
         $this->setTable('users');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->belongsTo('Groups', [
+            'foreignKey' => 'group_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
@@ -62,11 +79,6 @@ class UsersTable extends Table
             ->maxLength('password', 255)
             ->allowEmpty('password');
 
-        $validator
-            ->scalar('group_id')
-            ->maxLength('group_id', 20)
-            ->allowEmpty('group_id');
-
         return $validator;
     }
 
@@ -80,6 +92,7 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['username']));
+        $rules->add($rules->existsIn(['group_id'], 'Groups'));
 
         return $rules;
     }

@@ -2,7 +2,6 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * User Entity
@@ -10,13 +9,31 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property int $id
  * @property string $username
  * @property string $password
- * @property string $group_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ * @property int $group_id
+ *
+ * @property \Acl\Model\Entity\Aro[] $aro
  */
 class User extends Entity
 {
-
+        public function parentNode()
+        {
+            if (!$this->id) {
+                return null;
+            }
+            if (isset($this->group_id)) {
+                $groupId = $this->group_id;
+            } else {
+                $Users = TableRegistry::get('Users');
+                $user = $Users->find('all', ['fields' => ['group_id']])->where(['id' => $this->id])->first();
+                $groupId = $user->group_id;
+            }
+            if (!$groupId) {
+                return null;
+            }
+            return ['Groups' => ['id' => $groupId]];
+        }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -29,39 +46,12 @@ class User extends Entity
     protected $_accessible = [
         'username' => true,
         'password' => true,
-        'group_id' => true,
         'created' => true,
-        'modified' => true
+        'modified' => true,
+        'group_id' => true,
+        'aro' => true
     ];
 
-    // Ajoutez cette méthode
-    protected function _setPassword($value)
-    {
-        if (strlen($value)) {
-            $hasher = new DefaultPasswordHasher();
-
-            return $hasher->hash($value);
-        }
-    }
-    
-    public function parentNode()
-    {
-        if (!$this->id) {
-            return null;
-        }
-        if (isset($this->group_id)) {
-            $groupId = $this->group_id;
-        } else {
-            $Users = TableRegistry::get('Users');
-            $user = $Users->find('all', ['fields' => ['group_id']])->where(['id' => $this->id])->first();
-            $groupId = $user->group_id;
-        }
-        if (!$groupId) {
-            return null;
-        }
-        return ['Groups' => ['id' => $groupId]];
-    }
-    
     /**
      * Fields that are excluded from JSON versions of the entity.
      *
