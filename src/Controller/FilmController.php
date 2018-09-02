@@ -143,4 +143,11 @@ class FilmController extends AppController
 
         $this->set(compact('list', $list));
     }
+
+    public function toggleDispo($id)
+    {
+        $film = $this->Film->get($id);
+        $film->DISPO=="1"?$film->DISPO="0":$film->DISPO="1";
+        $this->Film->save($film);
+    }
 }

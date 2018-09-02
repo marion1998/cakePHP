@@ -53,6 +53,10 @@ class ReservationController extends AppController
             $reservation->idFilm = $v['id'];
             $this->Reservation->save($reservation);
 
+            require "FilmController.php";
+            $Films = new FilmController;
+            $Films->toggleDispo($v['id']);
+
         }
         $session->write('cart', []);
         return $this->redirect(['controller'=>'film','action'=>'filmuser']);
