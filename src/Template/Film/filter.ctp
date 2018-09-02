@@ -47,10 +47,17 @@ use App\Controller\AppController;
                 <td class="">
                     <?= $this->Html->test ?>
 
-                    <?php if($film->DISPO == 1) : ?>
+                    <?php if($film->DISPO == 1): ?>
+                        <?php if(!in_array($film->idFilm,array_column($cart,'id'))) : ?>
+                            <?= $this->Html->link('Add to cart',['controller'=>'cart','action'=>'addToCart',$film->idFilm,$film->titre]) ?>
+                        <?php else : ?>
+                            <?= "Already in your cart" ?>
+                         <?php endif ; ?>
+                    <?php endif ; ?>
+
+                    <?php if(in_array($film->idFilm,array_column($borrowed,'idFilm'))) : ?>
                     <?= $this->Html->link(
-                        'Add to cart',['controller'=>'cart','action'=>'addToCart',$film->idFilm,$film->titre]
-                        ) ?>
+                        'Give it back',['controller'=>'reservation','action'=>'deleteReservation',$borrowed[array_search($film->idFilm,array_column($borrowed,'idFilm'))]['idReservation'],$film->idFilm]) ?>
                     <?php endif ; ?>
                     
                 </td>

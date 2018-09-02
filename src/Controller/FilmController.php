@@ -178,7 +178,7 @@ class FilmController extends AppController
         $cart = $session->read('cart');
 
         $this->set('cart', $cart);
-
+        $this->set('borrowed', $session->read('reservation'));
         $this->set(compact('list', $list));
     }
 
