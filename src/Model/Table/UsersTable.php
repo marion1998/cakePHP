@@ -32,7 +32,7 @@ class UsersTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
-
+        $this->addBehavior('Acl.Acl', ['type' => 'requester']);
         $this->setTable('users');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
@@ -63,9 +63,9 @@ class UsersTable extends Table
             ->allowEmpty('password');
 
         $validator
-            ->scalar('role')
-            ->maxLength('role', 20)
-            ->allowEmpty('role');
+            ->scalar('group_id')
+            ->maxLength('group_id', 20)
+            ->allowEmpty('group_id');
 
         return $validator;
     }
