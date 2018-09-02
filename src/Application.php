@@ -38,6 +38,8 @@ class Application extends BaseApplication
         // Call parent to load bootstrap from files.
         parent::bootstrap();
 
+        $this->addPlugin('DebugKit\Plugin');
+
         if (PHP_SAPI === 'cli') {
             try {
                 $this->addPlugin('Bake');
@@ -46,6 +48,7 @@ class Application extends BaseApplication
             }
 
             $this->addPlugin('Migrations');
+
         }
 
         /*
