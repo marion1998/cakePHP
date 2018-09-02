@@ -54,8 +54,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <ul class="right"> 
                 <?php if($LoggedIn) : ?>
                     <?php if(!$Admin) : ?>
-                        <li><?= $this->Html->Link('My cart' , ['controller' => '#' , 'action' => '#']); ?></li>
-                        <li><?= $this->Html->Link('My reservations' , ['controller' => '#' , 'action' => '#']); ?></li>
+                        <li><?= $this->Html->Link('My reservations' , ['controller' => 'reservation' , 'action' => 'viewreservations']); ?></li>
                     <?php endif ; ?>
                     <li><?= $this->Html->Link('Logout' , ['controller' => 'users' , 'action' => 'logout']); ?></li>
                 <?php else : ?>
