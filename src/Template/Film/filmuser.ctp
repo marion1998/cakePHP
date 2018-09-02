@@ -41,7 +41,7 @@ use App\Controller\AppController;
             <?php foreach ($film as $film): ?>
             <tr>
                 <td>
-                <?= $this->Html->link(__(h($film->titre)), ['action' => 'view', $film->idFilm]) ?></td>
+                <?= $this->Html->link(__(h($film->titre)), ['action' => 'viewuser', $film->idFilm]) ?></td>
                 <td><?= date('j F Y',strtotime(h($film->dateSortie))) ?></td>
                 <td><?= h($film->duree)." minutes" ?></td>
                 <td><?= h($film->DISPO)==1?"Available":"Not available" ?></td>
@@ -56,7 +56,7 @@ use App\Controller\AppController;
 
                     <?php if(in_array($film->idFilm,array_column($borrowed,'idFilm'))) : ?>
                     <?= $this->Html->link(
-                        'Take it back',['controller'=>'reservation','action'=>'deleteReservation',$borrowed[array_search($film->idFilm,array_column($borrowed,'idFilm'))]['idReservation'],$film->idFilm]) ?>
+                        'Give it back',['controller'=>'reservation','action'=>'deleteReservation',$borrowed[array_search($film->idFilm,array_column($borrowed,'idFilm'))]['idReservation'],$film->idFilm]) ?>
                     <?php endif ; ?>
                     
                 </td>
