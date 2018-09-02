@@ -12,19 +12,6 @@
 </nav>
 <div class="film index large-9 medium-8 columns content">
 
-
-
-    <?= $this->Form->create(null , ['action'=>'filter']) ?>
-    <fieldset>
-        <legend><?= __('Search a film') ?></legend>
-        <?= $this->Form->control('Keyword') ?>
-    </fieldset>
-<?= $this->Form->button(__('Let\'s go')); ?>
-<?= $this->Form->end() ?>
-
-
-
-
     <h3><?= __('Film') ?>
         
     </h3>
