@@ -84,6 +84,8 @@ class FilmController extends AppController
 
         $this->set('film', $film);
         $session = $this->request->session();
+        $cart = $session->read('cart');
+        $this->set('cart',$cart);
         $this->set('borrowed', $session->read('reservation'));
     }
 

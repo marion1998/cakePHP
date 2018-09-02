@@ -5,6 +5,14 @@
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading"><?= __('Cart') ?></li>
+        <?php foreach ($cart as $v): ?>
+        <li><?= $v['title'] ?><?= $this->Html->link(
+                        'x',['controller'=>'cart','action'=>'removeFromCart',$v['id']])?></li>
+        <?php endforeach ?>
+    </ul>
+    <?= $this->Html->link('Validate cart',['controller'=>'reservation','action'=>'createReservation']);?>
 </nav>
 <div class="film view large-9 medium-8 columns content">
     <h3><?= h($film->idFilm) ?></h3>
