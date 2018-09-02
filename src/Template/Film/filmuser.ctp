@@ -48,12 +48,12 @@ use App\Controller\AppController;
                 <td class="">
                     <?= $this->Html->test ?>
                 
+                    <?php if($film->DISPO == 1) : ?>
                     <?= $this->Html->link(
                         'Add to cart',['controller'=>'cart','action'=>'addToCart',$film->idFilm,$film->titre]
-                        );?>
+                        ) ?>
+                    <?php endif ; ?>
                     
-                    <?php //echo $this->Html->link(__('Edit'), ['action' => 'edit', $film->idFilm]) ?>
-                    <?php //echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->idFilm], ['confirm' => __('Are you sure you want to delete # {0}?', $film->idFilm)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
