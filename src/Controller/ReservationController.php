@@ -78,6 +78,20 @@ class ReservationController extends AppController
         return $this->redirect(['controller'=>'film','action'=>'filmuser']);
     }
 
+    public function viewreservations()
+    {
+        $session = $this->request->session();
+        $user = $session->read('Auth.User')['id'];
+
+        $list = $this->paginate($this->Reservation
+            ->find()
+            ->where(['idUser' => $user]));
+
+        $this->set('borrowed', $session->read('reservation'));
+        $this->set(compact('list', $list));
+
+    }
+
 
     /**
      * Add method
