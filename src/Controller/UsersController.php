@@ -44,7 +44,7 @@ class UsersController extends AppController
                 return $this->redirect(['controller'=>'Film', 'action' => 'filmuser']);
 
             }
-            $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
+            $this->Flash->error('Incorrect password or username. Try again.');
         }
 
     }

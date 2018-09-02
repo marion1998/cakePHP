@@ -16,8 +16,8 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
        <div class="view content text-center">
        	<?php if(!$LoggedIn) : ?>
        	<?= $this->Html->meta('icon') ?>
-       	<?= $this->Html->link('LOGIN', '/users/login', ['class' => 'button','target' => '_blank']) ?>
-       	<?= $this->Html->link('Sign up', '/users/add', ['class' => 'button','target' => '_blank']) ?>
+       	<?= $this->Html->link('Login', '/users/login', ['class' => 'button','target' => '_blank']) ?>
+       	<?= $this->Html->link('Register', '/users/add', ['class' => 'button','target' => '_blank']) ?>
        	<?php endif ?>
 
         <?= $this->Html->image('http://www.larchipel.paris/wp-content/uploads/2014/10/logo_simplon.jpg'); ?>
