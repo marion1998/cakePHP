@@ -10,7 +10,7 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property int $id
  * @property string $username
  * @property string $password
- * @property string $role
+ * @property string $group_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  */
@@ -29,7 +29,7 @@ class User extends Entity
     protected $_accessible = [
         'username' => true,
         'password' => true,
-        'role' => true,
+        'group_id' => true,
         'created' => true,
         'modified' => true
     ];
@@ -42,6 +42,24 @@ class User extends Entity
 
             return $hasher->hash($value);
         }
+    }
+    
+    public function parentNode()
+    {
+        if (!$this->id) {
+            return null;
+        }
+        if (isset($this->group_id)) {
+            $groupId = $this->group_id;
+        } else {
+            $Users = TableRegistry::get('Users');
+            $user = $Users->find('all', ['fields' => ['group_id']])->where(['id' => $this->id])->first();
+            $groupId = $user->group_id;
+        }
+        if (!$groupId) {
+            return null;
+        }
+        return ['Groups' => ['id' => $groupId]];
     }
     
     /**
