@@ -37,28 +37,26 @@ class FilmController extends AppController
 
         $user = $session->read('Auth.User');
 
-                $Reservation = TableRegistry::get('reservation');
-                $query = $Reservation->find()
-                ->where(['idUser' => $user['id']])
-                ->join([
-                    'table' => 'film',
-                    'alias' => 'f',
-                    'type' => 'LEFT',
-                    'conditions' => 'f.idFilm = reservation.idFilm'
-                        ])
-                ->all()
-                ->toList();
+        $Reservation = TableRegistry::get('reservation');
+        $query = $Reservation->find()
+        ->where(['idUser' => $user['id']])
+        ->join([
+            'table' => 'film',
+            'alias' => 'f',
+            'type' => 'LEFT',
+            'conditions' => 'f.idFilm = reservation.idFilm'
+        ])
+        ->all()
+        ->toList();
 
-                $resaSession = [];
-                foreach($query as $v)
-                {
-                    array_push($resaSession,['idFilm'=>$v['idFilm'],'idReservation'=>$v['idReservation']]);
-                }
+        $resaSession = [];
+        foreach($query as $v)
+        {
+            array_push($resaSession,['idFilm'=>$v['idFilm'],'idReservation'=>$v['idReservation']]);
+        }
 
-                $session->write('reservation',$resaSession);
-                $this->set('borrowed', $session->read('reservation'));
-                print_r($session->read('reservation'));
-
+        $session->write('reservation',$resaSession);
+        $this->set('borrowed', $session->read('reservation'));
 
     }
 
