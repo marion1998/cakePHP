@@ -37,7 +37,13 @@ class UsersController extends AppController
                 $session = $this->request->session();
                 $session->write('cart', []);
 
-                return $this->redirect($this->Auth->redirectUrl());
+                if($user['group_id']==1)
+                return $this->redirect(['controller'=>'Film', 'action' => 'index']);
+                else
+                return $this->redirect(['controller'=>'Film', 'action' => 'filmuser']);
+
+
+                //return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
         }
