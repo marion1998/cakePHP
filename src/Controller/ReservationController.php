@@ -53,7 +53,7 @@ class ReservationController extends AppController
             $reservation->idFilm = $v['id'];
             $this->Reservation->save($reservation);
 
-            require "FilmController.php";
+            require_once "FilmController.php";
             $Films = new FilmController;
             $Films->toggleDispo($v['id']);
 
@@ -71,7 +71,7 @@ class ReservationController extends AppController
             $this->Flash->error(__('Error. Please, try again.'));
         }
 
-        require "FilmController.php";
+        require_once "FilmController.php";
         $Films = new FilmController;
         $Films->toggleDispo($idFilm);
 
