@@ -53,6 +53,11 @@ use App\Controller\AppController;
                         'Add to cart',['controller'=>'cart','action'=>'addToCart',$film->idFilm,$film->titre]
                         ) ?>
                     <?php endif ; ?>
+
+                    <?php if(in_array($film->idFilm,array_column($borrowed,'idFilm'))) : ?>
+                    <?= $this->Html->link(
+                        'Take it back',['controller'=>'reservation','action'=>'deleteReservation',$borrowed[array_search($film->idFilm,array_column($borrowed,'idFilm'))]['idReservation'],$film->idFilm]) ?>
+                    <?php endif ; ?>
                     
                 </td>
             </tr>

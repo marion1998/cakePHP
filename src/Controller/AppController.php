@@ -94,6 +94,13 @@ class AppController extends Controller
     {
         if($this->request->session()->read('Auth.User')){
             $this->set('LoggedIn', true);
+            $user = $this->request->session()->read('Auth.User');
+            if($user['group_id']==1){
+                $this->set('Admin', true);
+            }
+            else {
+                $this->set('Admin', false);
+            }
         }
         else {
             $this->set('LoggedIn', false);

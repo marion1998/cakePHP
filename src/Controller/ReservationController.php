@@ -60,8 +60,22 @@ class ReservationController extends AppController
         }
         $session->write('cart', []);
         return $this->redirect(['controller'=>'film','action'=>'filmuser']);
+    }
 
+    public function deleteReservation($idResa,$idFilm)
+    {
+        $reservation = $this->Reservation->get($idResa);
+        if ($this->Reservation->delete($reservation)) {
+            $this->Flash->success(__('You gave it back with success'));
+        } else {
+            $this->Flash->error(__('Error. Please, try again.'));
+        }
 
+        require "FilmController.php";
+        $Films = new FilmController;
+        $Films->toggleDispo($idFilm);
+
+        return $this->redirect(['controller'=>'film','action'=>'filmuser']);
     }
 
 

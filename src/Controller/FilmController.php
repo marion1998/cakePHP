@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Film Controller
@@ -29,10 +30,36 @@ class FilmController extends AppController
     public function filmuser(){
         $film = $this->paginate($this->Film);
         $session = $this->request->session();
-         $cart = $session->read('cart');
+        $cart = $session->read('cart');
 
         $this->set(compact('film'));
         $this->set('cart', $cart);
+
+        $user = $session->read('Auth.User');
+
+                $Reservation = TableRegistry::get('reservation');
+                $query = $Reservation->find()
+                ->where(['idUser' => $user['id']])
+                ->join([
+                    'table' => 'film',
+                    'alias' => 'f',
+                    'type' => 'LEFT',
+                    'conditions' => 'f.idFilm = reservation.idFilm'
+                        ])
+                ->all()
+                ->toList();
+
+                $resaSession = [];
+                foreach($query as $v)
+                {
+                    array_push($resaSession,['idFilm'=>$v['idFilm'],'idReservation'=>$v['idReservation']]);
+                }
+
+                $session->write('reservation',$resaSession);
+                $this->set('borrowed', $session->read('reservation'));
+                print_r($session->read('reservation'));
+
+
     }
 
     /**
