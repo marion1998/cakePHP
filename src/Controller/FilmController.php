@@ -83,6 +83,8 @@ class FilmController extends AppController
         ]);
 
         $this->set('film', $film);
+        $session = $this->request->session();
+        $this->set('borrowed', $session->read('reservation'));
     }
 
     /**

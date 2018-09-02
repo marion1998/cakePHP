@@ -30,4 +30,15 @@
         <h4><?= 'Synopsis' ?></h4>
         <?= $this->Text->autoParagraph(h($film->synopsis)); ?>
     </div>
+
+    <?php if($film->DISPO == 1) : ?>
+    <?= $this->Html->link(
+    'Add to cart',['controller'=>'cart','action'=>'addToCart',$film->idFilm,$film->titre]
+    ) ?>
+    <?php endif ; ?>
+
+    <?php if(in_array($film->idFilm,array_column($borrowed,'idFilm'))) : ?>
+    <?= $this->Html->link(
+    'Give it back',['controller'=>'reservation','action'=>'deleteReservation',$borrowed[array_search($film->idFilm,array_column($borrowed,'idFilm'))]['idReservation'],$film->idFilm]) ?>
+    <?php endif ; ?>
 </div>
