@@ -43,8 +43,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-bar-section">
             <ul class="left"> 
                 <?php if($LoggedIn) : ?>
-                    <li><?= $this->Html->Link('List of films' , ['controller' => 'film' , 'action' => 'filmuser']); ?></li>
-                    <li><?= $this->Html->Link('New film' , ['controller' => 'film' , 'action' => 'addbefore']); ?></li>
+                    <?php if($Admin) : ?>
+                        <li><?= $this->Html->Link('List of films' , ['controller' => 'film' , 'action' => 'index']); ?></li>
+                        <li><?= $this->Html->Link('New film' , ['controller' => 'film' , 'action' => 'addbefore']); ?></li>
+                    <?php else : ?>
+                        <li><?= $this->Html->Link('List of films' , ['controller' => 'film' , 'action' => 'filmuser']); ?></li>
+                    <?php endif ; ?>
                 <?php endif ; ?>
             </ul>
             <ul class="right"> 
