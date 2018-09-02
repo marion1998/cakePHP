@@ -44,8 +44,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <ul class="left"> 
                 <?php if($LoggedIn) : ?>
                     <?php if($Admin) : ?>
-                        <li><?= $this->Html->Link('List of films' , ['controller' => 'film' , 'action' => 'index']); ?></li>
-                        <li><?= $this->Html->Link('New film' , ['controller' => 'film' , 'action' => 'addbefore']); ?></li>
+                        <li><?= $this->Html->Link('All films' , ['controller' => 'film' , 'action' => 'index']); ?></li>
+                        <li><?= $this->Html->Link('All users' , ['controller' => 'users' , 'action' => 'index']); ?></li>
+                        <li><?= $this->Html->Link('All reservations' , ['controller' => 'reservation' , 'action' => 'index']); ?></li>
                     <?php else : ?>
                         <li><?= $this->Html->Link('List of films' , ['controller' => 'film' , 'action' => 'filmuser']); ?></li>
                     <?php endif ; ?>
@@ -53,8 +54,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </ul>
             <ul class="right"> 
                 <?php if($LoggedIn) : ?>
+                    <?php if(!$Admin) : ?>
+                        <li><?= $this->Html->Link('My cart' , ['controller' => '#' , 'action' => '#']); ?></li>
+                        <li><?= $this->Html->Link('My reservations' , ['controller' => '#' , 'action' => '#']); ?></li>
+                    <?php endif ; ?>
                     <li><?= $this->Html->Link('Logout' , ['controller' => 'users' , 'action' => 'logout']); ?></li>
-                    <li><?= $this->Html->Link('Cart' , ['controller' => '#' , 'action' => '#']); ?></li>
                 <?php else : ?>
                     <li><?= $this->Html->Link('Login' , ['controller' => 'users' , 'action' => 'login']); ?></li>
                     <li><?= $this->Html->Link('Register' , ['controller' => 'users' , 'action' => 'add']); ?></li>
