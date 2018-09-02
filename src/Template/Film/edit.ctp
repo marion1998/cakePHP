@@ -25,7 +25,7 @@
             echo $this->Form->control('dateSortie', ['label'=>'Release date' ,'empty' => true]);
             echo $this->Form->control('duree', ['label'=>'Duration' ,'empty' => true]);
             echo $this->Form->control('synopsis', ['label'=>'Synopsis']);
-            echo $this->Form->control('DISPO',['label'=>'Disponibility']);
+            echo $this->Form->control('DISPO',['label'=>'Disponibility','options' => ['1' => 'Available','0' => 'Not available']]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

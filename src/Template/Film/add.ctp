@@ -27,13 +27,13 @@ use Cake\I18n\Time;
                 echo $this->Form->control('dateSortie', ['empty' => true, 'value' => $result->Released]);
                 echo $this->Form->control('duree', ['empty' => true, 'value' => intval($result->Runtime)]);
                 echo $this->Form->control('synopsis',['value' => $result->Plot]);
-                echo $this->Form->control('DISPO', ['options' => ['1' => 'Disponible','0' => 'Indisponible'], 'value' => '1']);
+                echo $this->Form->control('DISPO', ['options' => ['1' => 'Available','0' => 'Not available'], 'value' => '1']);
             }else{
                 echo $this->Form->control('titre',['value' => $titlesub]);
                 echo $this->Form->control('dateSortie', ['empty' => true]);
                 echo $this->Form->control('duree', ['empty' => true]);
                 echo $this->Form->control('synopsis');
-                echo $this->Form->control('DISPO', ['options' => ['1' => 'Disponible','0' => 'Indisponible'], 'value' => '1']);
+                echo $this->Form->control('DISPO', ['options' => ['1' => 'Available','0' => 'Not available'], 'value' => '1']);
             }
         ?>
     </fieldset>
